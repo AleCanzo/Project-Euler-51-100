@@ -167,4 +167,4 @@ for x in list_tri:
             print("Trovata:", l)
     l = []
     
-#E' un problema di backtracking, cambia la logica
+#cambio commento
