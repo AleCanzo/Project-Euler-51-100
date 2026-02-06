@@ -160,8 +160,13 @@ def is_solution(state):
         return False
  
 def possible_choice(state):
-    return 0 
-        
+    i = 0
+    for bool in state[0]:
+        if bool == False:
+            case:
+                i = 0:
+                    
+     
 def backtracking(state):
     if is_solution(state):
         return state
@@ -171,9 +176,10 @@ def backtracking(state):
     
     
 if __name__ == "__main__":
-    list_tri, list_sq, list_pent, list_hex, list_hept, list_oct = list_num()
+    list = [list_num()]
     # Definisco la lista state come una lista di liste: la prima lista ha True o False nella posizione equivalente alla quadrupla usata 
     # e la seconda tiene traccia delle scelte fatte 
-    state = [[0, 0, 0, False, False, False, False, False, False], [0, 0, 0, 0, 0, 0]]
+    state = [[False, False, False, False, False, False], [0, 0, 0, 0, 0, 0], list]
     solution = backtracking(state)[1]
+    
     
