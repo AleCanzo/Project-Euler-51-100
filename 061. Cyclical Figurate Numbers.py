@@ -1,3 +1,31 @@
+def list_num():
+    list_tri = []
+    list_sq = []
+    list_pent = []
+    list_hex = []
+    list_hept =[]
+    list_oct = []
+
+    for n in range(45, 141):
+        list_tri.append(int(n*(n + 1)/2))
+        
+    for n in range(32, 100):
+        list_sq.append(int(pow(n,2)))
+        
+    for n in range(26, 82):
+        list_pent.append(int(n*(3*n - 1)/2))
+
+    for n in range(23, 71):
+        list_hex.append(int(n*(2*n - 1)))
+        
+    for n in range(21, 64):
+        list_hept.append(int(n*(5*n - 3)/2))
+        
+    for n in range(19, 59):
+        list_oct.append(int(n*(3*n - 2)))
+        
+    return list_tri, list_sq, list_pent, list_hex, list_hept, list_oct
+
 def match_tri(x):
     for y in list_tri:
         y = str(y)
@@ -124,47 +152,23 @@ def f(list_tri, list_sq, list_pent, list_hex, list_hept, list_oct, l):
         return l
     
     return []
+  
+def is_solution(state):
+    if state[0][3:] == [True, True, True, True, True, True]:
+        return True
+    else:
+        return False
+        
+def backtracking(state):
+    if is_solution(state):
+        return state
     
     
-
-list_tri = []
-list_sq = []
-list_pent = []
-list_hex = []
-list_hept =[]
-list_oct = []
-
-for n in range(45, 141):
-    list_tri.append(int(n*(n + 1)/2))
     
-for n in range(32, 100):
-    list_sq.append(int(pow(n,2)))
+if __name__ == "__main__":
+    list_tri, list_sq, list_pent, list_hex, list_hept, list_oct = list_num()
+    # Definisco la lista state come una lista di liste: la prima lista ha True o False nella posizione equivalente alla quadrupla usata 
+    # e la seconda tiene traccia delle scelte fatte 
+    state = [[0, 0, 0, False, False, False, False, False, False], [0, 0, 0, 0, 0, 0]]
+    solution = backtracking(state)[1]
     
-for n in range(26, 82):
-    list_pent.append(int(n*(3*n - 1)/2))
-
-for n in range(23, 71):
-    list_hex.append(int(n*(2*n - 1)))
-    
-for n in range(21, 64):
-    list_hept.append(int(n*(5*n - 3)/2))
-    
-for n in range(19, 59):
-    list_oct.append(int(n*(3*n - 2)))
-
-l=[]
-for x in list_tri:
-#x = list_tri[0]
-    #print(l)
-    print("x:", x)
-    l.append(str(x))
-    l = f([], list_sq, list_pent, list_hex, list_hept, list_oct, l) 
-    print(l)
-    if l != []:
-        print("eccoci qua", l)
-        #print(l[0][0:2], l[-1][2:4])
-        if l[0][0:2] == l[-1][2:4]:
-            print("Trovata:", l)
-    l = []
-    
-#cambio commento
