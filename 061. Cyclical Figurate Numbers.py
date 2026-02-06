@@ -158,10 +158,15 @@ def is_solution(state):
         return True
     else:
         return False
+ 
+def possible_choice(state):
+    return 0 
         
 def backtracking(state):
     if is_solution(state):
         return state
+    for choice in possible_choice(state):
+        
     
     
     
