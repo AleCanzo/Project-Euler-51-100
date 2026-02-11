@@ -163,11 +163,11 @@ def possible_choice(state):
     i = 0
     for bool in state[0]:
         if bool == False:
-            case:
-                i = 0:
+            case i == 0:
+                
                     
      
-def backtracking(state):
+def backtracking(state, list_numbers):
     if is_solution(state):
         return state
     for choice in possible_choice(state):
@@ -176,10 +176,10 @@ def backtracking(state):
     
     
 if __name__ == "__main__":
-    list = [list_num()]
+    list_numbers = [list_num()]
     # Definisco la lista state come una lista di liste: la prima lista ha True o False nella posizione equivalente alla quadrupla usata 
     # e la seconda tiene traccia delle scelte fatte 
-    state = [[False, False, False, False, False, False], [0, 0, 0, 0, 0, 0], list]
-    solution = backtracking(state)[1]
+    state = [[False, False, False, False, False, False], [0, 0, 0, 0, 0, 0]]
+    solution = backtracking(state, list_numbers)[1]
     
     
