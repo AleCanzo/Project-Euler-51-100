@@ -154,7 +154,7 @@ def f(list_tri, list_sq, list_pent, list_hex, list_hept, list_oct, l):
     return []
   
 def is_solution(state):
-    if state[0][3:] == [True, True, True, True, True, True]:
+    if state[0:][] == [True, True, True, True, True, True]:
         return True
     else:
         return False
@@ -176,10 +176,40 @@ def backtracking(state, list_numbers):
     
     
 if __name__ == "__main__":
-    list_numbers = [list_num()]
-    # Definisco la lista state come una lista di liste: la prima lista ha True o False nella posizione equivalente alla quadrupla usata 
-    # e la seconda tiene traccia delle scelte fatte 
-    state = [[False, False, False, False, False, False], [0, 0, 0, 0, 0, 0]]
-    solution = backtracking(state, list_numbers)[1]
+    list_tri, list_sq, list_pent, list_hex, list_hept, list_oct = list_num()
+    #state: (null, 0), (done, numero scelto), (progress, numero scelto), (chosen)
+    state_dict = {
+        {
+            "type": "tri",
+            "state": ["null", 0],
+            "list_num": list_tri
+        },
+        {
+            "type": "sq",
+            "state": ["null", 0],
+            "list_num": list_sq
+        },
+        {
+            "type": "pent",
+            "state": ["null", 0],
+            "list_num": list_pent
+        },
+        {
+            "type": "hex",
+            "state": ["null", 0],
+            "list_num": list_hex
+        },
+        {
+            "type": "hept",
+            "state": ["null", 0],
+            "list_num": list_hept
+        },
+        {
+            "type": "oct",
+            "state": ["null", 0],
+            "list_num": list_oct
+        }
+    }
+    solution = backtracking(state_dict)
     
     
