@@ -153,25 +153,38 @@ def f(list_tri, list_sq, list_pent, list_hex, list_hept, list_oct, l):
     
     return []
   
-def is_solution(state):
-    if state[0:][] == [True, True, True, True, True, True]:
+def is_solution(state_dict):
+    if state_dict[0:]["state"][0] == [True, True, True, True, True, True]:
         return True
     else:
         return False
  
-def possible_choice(state):
-    i = 0
-    for bool in state[0]:
+def possible_choice(state_dict):
+    choices = {}
+    for bool, i in enumerate(state_dict[0:]["state"][0]):
         if bool == False:
-            case i == 0:
-                
+            choices.append(state_dict[i])
+    return choices
                     
      
-def backtracking(state, list_numbers):
-    if is_solution(state):
-        return state
-    for choice in possible_choice(state):
+def backtracking(state_dict, list_numbers):
+    if is_solution(state_dict):
+        return state_dict
+    for choice, i in enumerate(possible_choice(state_dict)):
         
+        if len(choice) == 6:
+            choice[0]["state"][0] = True
+            for num in choice[0]["list_num"]:
+                choice[0]["state"][1] = num
+                result = backtracking(choice)
+                if result == True:
+                    return result
+        
+        for m in len(choice):
+            for n in choice[m]["list_num"]:
+                
+            
+        return
     
     
     
@@ -180,33 +193,33 @@ if __name__ == "__main__":
     #state: (null, 0), (done, numero scelto), (progress, numero scelto), (chosen)
     state_dict = {
         {
-            "type": "tri",
-            "state": ["null", 0],
+            "type": 3,
+            "state": [False, 0],
             "list_num": list_tri
         },
         {
-            "type": "sq",
-            "state": ["null", 0],
+            "type": 4,
+            "state": [False, 0],
             "list_num": list_sq
         },
         {
-            "type": "pent",
-            "state": ["null", 0],
+            "type": 5,
+            "state": [False, 0],
             "list_num": list_pent
         },
         {
-            "type": "hex",
-            "state": ["null", 0],
+            "type": 6,
+            "state": [False, 0],
             "list_num": list_hex
         },
         {
-            "type": "hept",
-            "state": ["null", 0],
+            "type": 7,
+            "state": [False, 0],
             "list_num": list_hept
         },
         {
-            "type": "oct",
-            "state": ["null", 0],
+            "type": 8,
+            "state": [False, 0],
             "list_num": list_oct
         }
     }
