@@ -1,23 +1,14 @@
-def totient(n):
-    result = n
-    p = 2
+from fractions import Fraction
+from math import gcd
 
-    while p * p <= n:
-        if n % p == 0:
-            while n % p == 0:
-                n //= p
-            result -= result // p
-        p += 1
+def coprime(n):
+    return [k for k in range(1, int(n/2) + 1) if gcd(k, n) == 1]
 
-    if n > 1:
-        result -= result // n
-
-    return result
-
-if __name__=="__main__":
-    sum = 0
-    for n in range(2, 1_000_001):
-        #print(n)
-        sum += totient(n)
-        
-    print(sum)
+if __name__ == "__main__":
+    c = 0
+    for d in range(12_001):
+        for x in coprime(d):
+            y = Fraction(x, d)
+            if y > Fraction(1, 3) and y < Fraction(1, 2):
+                c += 1
+    print(c)
