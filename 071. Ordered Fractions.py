@@ -1,17 +1,14 @@
 from fractions import Fraction
-import matplotlib.pyplot as plt
+from math import gcd
 
-for m in range(7, 1_000):
-    l = []
-    for d in range(1, m):        
-        for n in range(1, d):
-            x = Fraction(n, d)
-            l.append(x)
-            #print(n, d, x)
-    l = list(dict.fromkeys(l))
-    #print(l)
-    min = l[l.index(Fraction(3, 5)) - 1]
-    
-    print(l[l.index(Fraction(3, 5)) - 1])
-    l.sort()
+if __name__ == "__main__":
+    min = Fraction(2,5)
+    m, n = 2, 5
+    while n <= 1_000_001:
+        y = Fraction(m, n)
+        if y >= min and y < Fraction(3, 7):
+            min = y
+        n += 7
+        m += 3
+    print(min)
 
